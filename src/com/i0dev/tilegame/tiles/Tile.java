@@ -1,5 +1,6 @@
 package com.i0dev.tilegame.tiles;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
