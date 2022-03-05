@@ -26,12 +26,9 @@ public class GameState extends State {
     boolean loadedLocations = false;
 
     public void loadLocations() {
-        for (int y = 200, i = 0; i < 6; y += 50, i++) {
-            for (int x = -100, j = 0; j < 5; x += 50, j++) {
-                if (j == 0 && i == 0) {
-                    board[j][i] = new BoardTile(((game.width / 2 - 25) - x), y, Assets.a);
-                } else
-                    board[j][i] = new BoardTile(((game.width / 2 - 25) - x), y);
+        for (int yLoc = 200, y = 0; y < 6; yLoc += 50, y++) {
+            for (int xLoc = 100, x = 0; x < 5; xLoc -= 50, x++) {
+                board[x][y] = new BoardTile(((game.width / 2 - 25) - xLoc), yLoc);
             }
         }
         loadedLocations = true;
@@ -39,10 +36,12 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
+        g.drawImage(Assets.background, 0, 0, null);
         if (!loadedLocations) loadLocations();
         for (BoardTile[] boardTiles : board) {
             for (BoardTile boardTile : boardTiles) {
-                g.drawImage(boardTile.asset, boardTile.getXLoc(), boardTile.getYLoc(), 50, 50, null);
+                if (boardTile != null)
+                    g.drawImage(boardTile.asset, boardTile.getXLoc(), boardTile.getYLoc(), 50, 50, null);
             }
         }
     }

@@ -15,7 +15,6 @@ public class Tile {
 
     public static Tile[] tiles = new Tile[256];
     public static Tile background = new Background(0);
-    public static Tile blankTile = new BlankTile(1);
 
     // class
 
