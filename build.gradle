@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'org.cadixdev.licenser' version '0.6.1' apply false
+}
+
+defaultTasks 'licenseFormat', 'build'
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.cadixdev.licenser'
+
+    group = 'com.i0dev.wordle'
+    version = '1.0.0'
+
+    jar {
+        from '../LICENSE.txt'
+    }
+
+}
